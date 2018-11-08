@@ -12,6 +12,7 @@
 /* Handle */
 ::-webkit-scrollbar-thumb {
     background: #e9e9e9;
+    border-radius: 8px;
 }
 
 /* Handle on hover */
@@ -109,19 +110,18 @@ transform: translate(-50%, -50%);
   text-align: center;
   position: absolute;
   width: 30%;
-  height: 85%;
+  height: 80%;
   margin-top: 35px;
   font-size: 16pt;
   font-family: Arial;
   border-color: #d1cfcf;
   border-style: solid;
     border-radius: 8px;
-    transition:2s;
+    transition:0.3s;
 }
 
 .status:hover {
-  border-color: #bababa;
-  background-color: #e9e9e9;
+  border-color: darkgray;
 }
 
 #backlog {
@@ -142,7 +142,7 @@ transform: translate(-50%, -50%);
   margin-left:10px;
 }
 
-#save_kanban {
+#save_kanban, #refresh_kanban {
     float: left;
 
 }
@@ -155,26 +155,26 @@ transform: translate(-50%, -50%);
       -ms-user-select: none; /* Internet Explorer/Edge */
           user-select: none; /* Non-prefixed version, currently
                                 supported by Chrome and Opera */
-  cursor: grab;
+  cursor: move;
   overflow-y: scroll;
   padding-left: 5px;
   padding-top: 5px;
   text-align: justify;
   border-color: #d1cfcf;
   border-style: solid;
-    border-radius: 8px;
+  border-radius: 8px;
   height: 150px;
   width: 90%;
   margin-left: 4%;
   background-color: #fefefe;
-  margin-top: 10px;
+  margin-top: 20px;
   transition: 0.3s;
 }
 
 .card:hover {
-  background-color: #f6f6f6;
+  border-color:#4286f4
 }
 
 .card:active {
-  cursor: grabbing;
+
 }
