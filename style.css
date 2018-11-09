@@ -109,7 +109,7 @@ transform: translate(-50%, -50%);
   background-color: #f7f7f7;
   text-align: center;
   position: absolute;
-  width: 30%;
+  width: 22%;
   height: 80%;
   margin-top: 35px;
   font-size: 16pt;
@@ -125,16 +125,19 @@ transform: translate(-50%, -50%);
 }
 
 #backlog {
-  left: 35px;
+  left: 2.5%;
 }
 
 #inprogress {
-  left: 50%;
-  transform: translate(-50%);
+  left:26.5%;
+}
+
+#review {
+  left: 50.5%;
 }
 
 #ready {
-  right: 35px;
+  left: 75.5%;
 }
 
 #load_kanban {
@@ -172,7 +175,8 @@ transform: translate(-50%, -50%);
 }
 
 .card:hover {
-  border-color:#4286f4
+  border-color:#4286f4;
+
 }
 
 .card:active {
