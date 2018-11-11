@@ -20,6 +20,39 @@
     background: #c9c9c9;
 }
 
+#kontext_menu {
+  margin-left: -500px;
+  margin-top: -500px;
+  opacity: 0;
+  position: absolute;
+  width: 150px;
+  overflow: hidden;
+  height: 80px;
+  padding: 5px;
+  background-color: #F7F7F7;
+  border-color: #d1cfcf;
+  border-style: solid;
+  border-radius: 1px;
+  border-radius: 5px;
+}
+
+.kontext_button {
+  cursor: pointer;
+  margin-top: 5px;
+  background-color:#F7F7F7;
+  color: #444444;
+  font-size: 18pt;
+  width: 150px;
+  border-radius: 5px;
+  border-color: #F7F7F7;
+  border-style:solid;
+}
+
+.kontext_button:hover {
+  border-color: #d1cfcf;
+  border-style: dashed;
+}
+
 .button {
   float: right;
   margin-right: 10px;
@@ -47,6 +80,7 @@ html, body {
   padding: 0px;
   margin: 0px;
   background-color: #fefefe;
+  overflow-x: hidden;
 }
 
 #controls {
@@ -137,12 +171,7 @@ transform: translate(-50%, -50%);
 }
 
 #ready {
-  left: 75.5%;
-}
-
-#load_kanban {
-  float: left;
-  margin-left:10px;
+  left: 74.5%;
 }
 
 #save_kanban, #refresh_kanban {
@@ -181,4 +210,34 @@ transform: translate(-50%, -50%);
 
 .card:active {
 
+}
+
+#button-file {
+    color: #fff;
+    float: left;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: #444444;
+    background-color: #eaeaea;
+    border-color: #d1cfcf;
+    border-style: dashed;
+    font-size: 18pt;
+    padding: 12px;
+    border-radius: 8px;
+    transition: 0.3s;
+    height: 56px;
+    filter:progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#bb0000ff', EndColorStr='#990000ff');
+
+    padding: 10px 5px;
+}
+#button-file:active {
+    filter:progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#990000ff', EndColorStr='#bb0000ff');
+    border-color: #a5a5a5;
+    background-color: #c1c1c1;
+
+}
+#button-file:hover {
+    cursor: pointer;
+    border-color: #bababa;
+    background-color: #d8d8d8;
 }

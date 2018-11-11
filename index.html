@@ -2,8 +2,10 @@
 <html lang="en">
 
   <head>
+    <meta charset="utf-8"/>
     <title>Kanban-Board</title>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!--<link rel="manifest" href="manifest.json"/>-->
+    <script src="jquery-3.3.1.min.js"></script>
     <script src="controller.js"></script>
     <script type="text/javascript">
       function allowDrop(ev) {
@@ -12,20 +14,30 @@
 
       function drag(ev) {
         ev.dataTransfer.setData("text", ev.target.id);
+        $('#kontext_menu').css({
+          'opacity': '0',
+          'margin-left': "-500px",
+          'margin-top': "-500px"
+        });
       }
 
       function drop(ev) {
         ev.preventDefault();
         var data = ev.dataTransfer.getData("text");
         ev.target.appendChild(document.getElementById(data));
+        $('#kontext_menu').css({
+          'opacity': '0',
+          'margin-left': "-500px",
+          'margin-top': "-500px"
+        });
       }
-</script>
+    </script>
     <link rel="stylesheet" type="text/css" href="style.css" media="screen"/>
   </head>
 
   <body>
     <div id="controls">
-      <button id="load_kanban" class="button" title="load kanban file">load</button>
+      <input type="file" id="input-file" />
       <button id="save_kanban" class="button" title="save kanban file">save</button>
       <button id="refresh_kanban" class="button" title="refresh" style="width: 60px !important; font-family: Consolas;"><strong>&#8634;</strong></button>
       <button id="clear_kanban" class="button" title="clear cards">clear</button>
@@ -44,9 +56,13 @@
       </div>
       <div id="ready" title="ready" class="status" ondrop="drop(event)" ondragover="allowDrop(event)">
         ready
-
       </div>
     </div>
   </body>
+
+  <div id="kontext_menu">
+    <button id="kontext_delete" class="kontext_button" onclick="console.log('delete')">delete</button>
+    <button id="kontext_read" class="kontext_button">read aloud</button>
+  </div>
 
 </html>
