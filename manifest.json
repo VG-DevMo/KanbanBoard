@@ -7,7 +7,7 @@
   "display": "browser",
   "orientation": "landscape",
   "scope": "/index.html",
-  "start_url": "/index.html"
+  "start_url": "/index.html",
   "author": "Jonas Grümpel",
   "background": {
     "scripts": ["jquery-3.3.1.min.js", "controller.js"],
