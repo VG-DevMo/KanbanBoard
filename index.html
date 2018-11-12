@@ -37,7 +37,8 @@
 
   <body>
     <div id="controls">
-      <input type="file" id="input-file" />
+      <input type="file" id="input-file" onchange="onInputChange(e)"/>
+      <button id="load_kanban" class="button" title="save kanban file">load</button>
       <button id="save_kanban" class="button" title="save kanban file">save</button>
       <button id="refresh_kanban" class="button" title="refresh" style="width: 60px !important; font-family: Consolas;"><strong>&#8634;</strong></button>
       <button id="clear_kanban" class="button" title="clear cards">clear</button>
