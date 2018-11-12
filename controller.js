@@ -1,5 +1,4 @@
-var lastContextCard;function showCustomMenu(e){if("card"===e.path[0].className){lastContextCard=e;var t=e.clientX+document.body.scrollLeft+document.documentElement.scrollLeft,n=e.clientY+document.body.scrollTop+document.documentElement.scrollTop;$("#kontext_menu").css({opacity:"1","margin-left":(parseInt(t)+2).toString()+"px","margin-top":(parseInt(n)-79).toString()+"px"})}else lastContextCard=null,$("#kontext_menu").css({opacity:"0","margin-left":"-500px","margin-top":"-500px"})}window.onload=function(){if(n(),$(window).resize(function(){$("#kontext_menu").css({opacity:"0","margin-left":"-500px","margin-top":"-500px"})}),$("#load_kanban").click(function(){n()}),$("#kontext_delete").click(function(){null!==lastContextCard&&(console.log(lastContextCard),console.log(lastContextCard.path[0]),document.getElementById(lastContextCard.path[0].id).remove())}),$("#kontext_read").click(function(){var e=lastContextCard.path[0].innerHTML,t=new SpeechSynthesisUtterance(e);window.speechSynthesis.speak(t)}),null==a("__cookie")){if(confirm("We use cookies, is this ok?")){var e=a("_path");void 0!==e&&(t=e,$.getJSON(t))}else window.history.back();i("__cookie","true")}var t;function n(){var e=a("__path");console.log(e),$("#input-file").attr("value",e),console.log($("#input-file").attr("files")),$("#input-file").trigger("click")}$("#add_kanban").click(function(){var e,t,n=prompt("Card text:");null!==n&&(""!==n?(e=n,(t=document.createElement("div")).setAttribute("id","_"+Math.random().toString(36).substr(2,9)),t.setAttribute("class","card"),t.setAttribute("draggable","true"),t.setAttribute("ondragstart","drag(event)"),t.setAttribute("title","press left for moving"),t.innerHTML=e,document.getElementById("backlog").appendChild(t)):alert("You have to enter a card text!"))}),document.addEventListener("click",function(e){$("#kontext_menu").css({opacity:"0","margin-left":"-500px","margin-top":"-500px"})},!1),console.log("test");var r=document.getElementById("input-file");function o(e,t){for(var n=0;n<t.length;n++)if(""!==t[n].id){var r=document.createElement("div");r.setAttribute("id",t[n].id),r.setAttribute("class","card"),r.setAttribute("draggable","true"),r.setAttribute("ondragstart","drag(event)"),r.setAttribute("title","press left for moving"),r.innerHTML=t[n].text,document.getElementById(e).appendChild(r)}}function i(e,t){var n=new Date;n.setTime(n.getTime()+24*r*60*60*50);var r=n.toUTCString(),o=new Date;o.setFullYear(o.getFullYear()+1),document.cookie=e+"="+t+";expires="+o.toUTCString()+";"}function a(e){for(var t=e+"=",n=document.cookie.split(";"),r=0;r<n.length;r++){for(var o=n[r];" "===o.charAt(0);)o=o.substring(1);if(0===o.indexOf(t))return o.substring(t.length,o.length)}}console.log(r),r.addEventListener("change",function(e){i("__path",$("#input-file").value);var t=e.target,n=new FileReader;n.onload=function(){n.result;!function(e){$("#clear_kanban").trigger("click");var t=JSON.parse(e);o("backlog",t.backlog),o("inprogress",t.inprogress),o("ready",t.ready),o("review",t.review)}(n.result)},n.readAsText(t.files[0])}),$("#button-file").click(function(){}),$("#save_kanban").click(function(){var e="";if(null!==(e=prompt("Enter save path:"))){var t="data:text/json;charset=utf-8,"+encodeURIComponent(function(){var e=[];e.push("{"),e.push('"backlog": [');for(var t=document.getElementById("backlog").childNodes,n=1;n<t.length;n++){var r=t[n],o='{ "id" : "'+r.id+'" , "text" : "'+r.innerHTML+'" },';e.push(o)}e.push('{ "id" : "" , "text" : "" }'),e.push("],"),e.push('"inprogress": [');for(var t=document.getElementById("inprogress").childNodes,n=1;n<t.length;n++){var r=t[n],o='{ "id" : "'+r.id+'" , "text" : "'+r.innerHTML+'" },';e.push(o)}e.push('{ "id" : "" , "text" : "" }'),e.push("],"),e.push('"review": [');for(var t=document.getElementById("review").childNodes,n=1;n<t.length;n++){var r=t[n],o='{ "id" : "'+r.id+'" , "text" : "'+r.innerHTML+'" },';e.push(o)}e.push('{ "id" : "" , "text" : "" }'),e.push("],"),e.push('"ready": [');for(var t=document.getElementById("ready").childNodes,n=1;n<t.length;n++){var r=t[n],o='{ "id" : "'+r.id+'" , "text" : "'+r.innerHTML+'" },';e.push(o)}e.push('{ "id" : "" , "text" : "" }'),e.push("]"),e.push("}");for(var i="",a=0;a<e.length;a++)i+=e[a].toString();return i}()),n=document.createElement("a");n.setAttribute("href",t),n.setAttribute("download",e+".json"),document.body.appendChild(n),n.click(),n.remove()}}),$("#refresh_kanban").click(function(){location.reload()}),$("#clear_kanban").click(function(){document.getElementById("backlog").innerHTML="",document.getElementById("backlog").innerHTML="backlog",document.getElementById("inprogress").innerHTML="",document.getElementById("inprogress").innerHTML="in progress",document.getElementById("review").innerHTML="",document.getElementById("review").innerHTML="review",document.getElementById("ready").innerHTML="",document.getElementById("ready").innerHTML="ready"})},window.oncontextmenu=function(e){return showCustomMenu(e),!1};
-/*var lastContextCard;
+var lastContextCard;
 window.onload = function onload () {
 setPathToLoad();
 
@@ -80,7 +79,7 @@ function setPathToLoad() {
   var fileInput = document.getElementById('input-file');
   var loadFile;
   console.log(fileInput);
-  fileInput.addEventListener('change', function(event) {
+  $('#input-file').change(function(event) {
       ud_create_cookie('__path', $('#input-file').value);
       var input = event.target;
 
@@ -93,15 +92,13 @@ function setPathToLoad() {
       reader.readAsText(input.files[0]);
     });
 
-
-
   $('#button-file').click(function(){
 
   });
 
   $('#save_kanban').click(function(){
     var path = "",
-    path = prompt('Enter save path:');
+    path = prompt('File-Name:');
     if(path !== null) {
       var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(saveFile());
       var downloadAnchorNode = document.createElement('a');
@@ -114,7 +111,8 @@ function setPathToLoad() {
   });
 
   $('#refresh_kanban').click(function(){
-    location.reload();
+      $('#input-file').trigger('change');
+    //location.reload();
   });
 
   $('#clear_kanban').click(function(){
@@ -318,4 +316,4 @@ function showCustomMenu(e) {
         'margin-top': "-500px"
       });
     }
-}*/
+}
