@@ -1,5 +1,13 @@
 {
-  "version": "0.4",
+  "version": "0.5",
+  "name": "Kanban-Board",
+  "short_name": "Board",
+  "theme_color": "#4286f4",
+  "background_color": "#f7f7f7",
+  "display": "browser",
+  "orientation": "landscape",
+  "scope": "/index.html",
+  "start_url": "/index.html"
   "author": "Jonas Grümpel",
   "background": {
     "scripts": ["jquery-3.3.1.min.js", "controller.js"],
