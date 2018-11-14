@@ -17,8 +17,6 @@ setPathToLoad();
 
   $('#kontext_delete').click(function() {
     if (lastContextCard !== null) {
-      console.log(lastContextCard);
-      console.log(lastContextCard.path[0]);
       document.getElementById(lastContextCard.path[0].id).remove();
     }
   });
@@ -69,16 +67,12 @@ setPathToLoad();
 
 function setPathToLoad() {
   var val = ud_read_cookie('__path');
-  console.log(val);
   $('#input-file').attr('value', val);
-  console.log($('#input-file').attr('files'));
   $('#input-file').trigger("click")
 }
 
-  console.log('test');
   var fileInput = document.getElementById('input-file');
   var loadFile;
-  console.log(fileInput);
   $('#input-file').change(function(event) {
       ud_create_cookie('__path', $('#input-file').value);
       var input = event.target;
@@ -94,6 +88,30 @@ function setPathToLoad() {
 
   $('#button-file').click(function(){
 
+  });
+
+  $('#kontext_print').click(function(){
+  //  lastContextCard.path[0].print();
+  var elemId = '#' + lastContextCard.path[0].id.toString();
+  var elem = $(elemId);
+  Popup(elem.html());
+
+function Popup(data) {
+    var myWindow = window.open('', 'my div', 'height=400,width=600');
+    myWindow.document.write('<html><head>');
+    /*optional stylesheet*/ //myWindow.document.write('<link rel="stylesheet" href="main.css" type="text/css" />');
+    myWindow.document.write('</head><body><div style="font-family:arial;border-style: solid; border-radius: 8px; padding-left: 5px; padding-top: 5px; text-align: justify; border-color: #4286f4; height: 90%; width: 90%; margin-left: 4%; background-color: #fefefe;">');
+    myWindow.document.write(data);
+    myWindow.document.write('</div></body></html>');
+    myWindow.document.close(); // necessary for IE >= 10
+
+    myWindow.onload=function(){ // necessary if the div contain images
+
+    myWindow.focus(); // necessary for IE >= 10
+    myWindow.print();
+    myWindow.close();
+};
+}
   });
 
   $('#save_kanban').click(function(){
@@ -113,6 +131,15 @@ function setPathToLoad() {
   $('#refresh_kanban').click(function(){
       $('#input-file').trigger('change');
     //location.reload();
+  });
+
+  $('#kontext_copy_text').click(function() {
+    var input;
+    input = document.getElementById('phantom-input');
+    input.value = lastContextCard.path[0].innerHTML;
+    input.select();
+    document.execCommand('copy');
+    input.value = "";
   });
 
   $('#clear_kanban').click(function(){

@@ -2,42 +2,27 @@
 <html lang="en">
 
   <head>
-    <meta charset="utf-8"/>
-    <title>Kanban-Board</title>
     <link rel="manifest" href="manifest.json"/>
+    <meta charset="utf-8"/>
+    <meta name="author" content="Jonas Grümpel"/>
+    <meta name="application-name" content="Kanban-Board"/>
+    <meta name="theme-color" content="#4286f4">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Free, Online Kanban board"/>
+    <meta name="lang" content="EN"/>
+    <title>Kanban-Board</title>
     <script src="jquery-3.3.1.min.js"></script>
     <script src="controller.js"></script>
     <script type="text/javascript">
-      function allowDrop(ev) {
-        ev.preventDefault();
-      }
-
-      function drag(ev) {
-        ev.dataTransfer.setData("text", ev.target.id);
-        $('#kontext_menu').css({
-          'opacity': '0',
-          'margin-left': "-500px",
-          'margin-top': "-500px"
-        });
-      }
-
-      function drop(ev) {
-        ev.preventDefault();
-        var data = ev.dataTransfer.getData("text");
-        ev.target.appendChild(document.getElementById(data));
-        $('#kontext_menu').css({
-          'opacity': '0',
-          'margin-left': "-500px",
-          'margin-top': "-500px"
-        });
-      }
+      function allowDrop(t){t.preventDefault()}function drag(t){t.dataTransfer.setData("text",t.target.id),$("#kontext_menu").css({opacity:"0","margin-left":"-500px","margin-top":"-500px"})}function drop(t){t.preventDefault();var e=t.dataTransfer.getData("text");t.target.appendChild(document.getElementById(e)),$("#kontext_menu").css({opacity:"0","margin-left":"-500px","margin-top":"-500px"})};
     </script>
     <link rel="stylesheet" type="text/css" href="style.css" media="screen"/>
   </head>
 
   <body>
     <div id="controls">
-      <input type="file" id="input-file"/>
+      <input type="file" id="input-file" accept=".json"/>
+      <input type="text" id="phantom-input"/>
       <button id="load_kanban" class="button" title="save kanban file">load</button>
       <button id="save_kanban" class="button" title="save kanban file">save</button>
       <button id="refresh_kanban" class="button" title="load file again" style="width: 60px !important; font-family: Consolas;"><strong>&#8634;</strong></button>
@@ -63,7 +48,11 @@
 
   <div id="kontext_menu">
     <button id="kontext_delete" class="kontext_button" onclick="console.log('delete')">delete</button>
+    <button id="kontext_copy_text" class="kontext_button">copy text</button>
     <button id="kontext_read" class="kontext_button">read aloud</button>
+    <button id="kontext_print" class="kontext_button">print</button>
   </div>
+
+  <span id="credits">made by <a id="href_" href="https://github.com/VG-DevMo">Jonas</a></span>
 
 </html>
