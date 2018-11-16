@@ -1,5 +1,10 @@
 var lastContextCard;
 window.onload = function onload () {
+
+  $('#html').css({
+    'opacity': '1'
+  });
+
 setPathToLoad();
 
   $(window).resize(function () {
@@ -44,6 +49,20 @@ setPathToLoad();
     return json;
   }
 
+  $('#save_to_google_drive').click(function(){
+    var path = "",
+    path = prompt('File-Name:');
+    if(path !== null) {
+      var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(saveFile());
+      var downloadAnchorNode = document.createElement('a');
+      downloadAnchorNode.setAttribute("href",     dataStr);
+      downloadAnchorNode.setAttribute("download", path + ".json");
+      document.body.appendChild(downloadAnchorNode); // required for firefox
+      downloadAnchorNode.click();
+      downloadAnchorNode.remove();
+    }
+
+  });
 
   $('#add_kanban').click(function(){
     var text = prompt('Card text:');

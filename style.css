@@ -1,5 +1,10 @@
-#add_popup,.button {
-    cursor:pointer;
+#html {
+  opacity: 0;
+  transition: 0.5s;
+}
+
+#add_popup,.button, #save_to_google_drive {
+    cursor:pointer ;
     color: #444;
     border-radius: 8px;
     font-size: 18pt;
@@ -54,23 +59,23 @@
     border-color: #F7F7F7
 }
 
-.button,.kontext_button:hover {
+.button,.kontext_button:hover, #save_to_google_drive {
     border-color: #d1cfcf;
     border-style: dashed
 }
 
-.button {
+.button, #save_to_google_drive {
     float: right;
     margin-right: 10px;
     background-color: #eaeaea
 }
 
-.button:hover {
+.button:hover, #save_to_google_drive:hover {
     border-color: #bababa;
     background-color: #d8d8d8
 }
 
-.button:active {
+.button:active, #save_to_google_drive:active {
     border-color: #a5a5a5;
     background-color: #c1c1c1
 }
@@ -87,7 +92,7 @@ body,html {
 }
 
 #add_popup,#controls,.status {
-    background-color: #f7f7f7
+    background-color: #f7f7f7;
 }
 
 #controls {

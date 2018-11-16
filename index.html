@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html id="html" lang="en">
 
   <head>
     <link rel="manifest" href="manifest.json"/>
@@ -12,6 +12,7 @@
     <meta name="lang" content="EN"/>
     <title>Kanban-Board</title>
     <script src="jquery-3.3.1.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="controller.js"></script>
     <script type="text/javascript">
       function allowDrop(t){t.preventDefault()}function drag(t){t.dataTransfer.setData("text",t.target.id),$("#kontext_menu").css({opacity:"0","margin-left":"-500px","margin-top":"-500px"})}function drop(t){t.preventDefault();var e=t.dataTransfer.getData("text");t.target.appendChild(document.getElementById(e)),$("#kontext_menu").css({opacity:"0","margin-left":"-500px","margin-top":"-500px"})};
@@ -23,6 +24,11 @@
     <div id="controls">
       <input type="file" id="input-file" accept=".json"/>
       <input type="text" id="phantom-input"/>
+      <div id="save_to_google_drive" class="g-savetodrive"
+        data-src="http://localhost/KanbanBoard/test.json"
+        data-filename="file.json"
+        data-sitename="Kanban-Board">
+      </div>
       <button id="load_kanban" class="button" title="save kanban file">load</button>
       <button id="save_kanban" class="button" title="save kanban file">save</button>
       <button id="refresh_kanban" class="button" title="load file again" style="width: 60px !important; font-family: Consolas;"><strong>&#8634;</strong></button>
